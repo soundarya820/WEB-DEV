@@ -1,0 +1,61 @@
+/* style.css */
+
+body {
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       background: #f0f4f8;
+       color: #333;
+       margin: 0;
+       padding: 20px;
+   }
+   
+   h1 {
+       text-align: center;
+       color: #2c3e50;
+       background-color: #dff6ff;
+       padding: 20px;
+       border-radius: 10px;
+       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+   }
+   
+   h2 {
+       color: #34495e;
+       border-bottom: 2px solid #3498db;
+       padding-bottom: 5px;
+       margin-top: 40px;
+   }
+   
+   ol, ul, dl {
+       font-size: 18px;
+       margin-left: 40px;
+       background-color: #ffffff;
+       padding: 15px 20px;
+       border-radius: 10px;
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+       margin-bottom: 20px;
+   }
+   
+   li, dt, dd {
+       margin-bottom: 10px;
+   }
+   
+   /* Custom colored lists */
+   .blue-list {
+       color: #0d84f0;
+   }
+   
+   .nested-list {
+       color: #3610e8;
+   }
+   
+   .definition-list {
+       color: #800080;
+   }
+   
+   /* Hover effect for list items */
+   li:hover, dt:hover, dd:hover {
+       background-color: #f9f9f9;
+       padding-left: 8px;
+       transition: 0.3s ease-in-out;
+       border-left: 3px solid #3498db;
+   }
+   
