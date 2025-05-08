@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="pr12.xsl" ?>
+<company>
+<cp> 
+		<Name>Name -: Tata Consultancy Services (TCS)</Name> 
+		<Locations>Location -: Mumbai, Maharashtra</Locations> 
+		<Industry>Industry -: Information Technology Services</Industry> 
+		<Specialty>Specialty -: Global leader in IT services, consulting, and business solutions.</Specialty> 
+	</cp> 
+	
+	<cp> 
+		<Name>Name -: Reliance Industries</Name> 
+		<Locations>Location -: Mumbai, Maharashtra</Locations> 
+		<Industry>Industry -: Oil, Gas, Petrochemicals, Telecom</Industry> 
+		<Specialty>Specialty -: India's largest private-sector enterprise with diversified businesses.</Specialty> 
+	</cp> 
+	
+	<cp> 
+		<Name>Name -: Infosys</Name> 
+		<Locations>Location -: Bengaluru, Karnataka</Locations> 
+		<Industry>Industry -: Information Technology Consulting</Industry> 
+		<Specialty>Specialty -: Renowned for digital transformation and next-gen IT services.</Specialty> 
+	</cp> 
+	
+	<cp> 
+		<Name>Name -: HDFC Bank</Name> 
+		<Locations>Location -: Mumbai, Maharashtra</Locations> 
+		<Industry>Industry -: Banking and Financial Services</Industry> 
+		<Specialty>Specialty -: Leading private sector bank offering a wide range of services.</Specialty> 
+	</cp> 
+	
+	<cp> 
+		<Name>Name -: Wipro</Name> 
+		<Locations>Location -: Bengaluru, Karnataka</Locations> 
+		<Industry>Industry -: Information Technology and Consulting</Industry> 
+		<Specialty>Specialty -: Expertise in AI, Cloud, and cybersecurity solutions globally.</Specialty> 
+	</cp> 
+ 
+</company>
