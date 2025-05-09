@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MindMap - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(to right, #e0f7fa, #fff);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    nav {
+      background-color: #f672bf;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    nav .nav-links a {
+      margin-left: 25px;
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav .nav-links a:hover {
+      color: #ffeaa7;
+    }
+
+    /* Home Content */
+    .home-content {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .home-content h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .home-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .home-content .start-planning-btn {
+      margin-top: 40px;
+      padding: 15px 40px;
+      background-color: #eb7ebc;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: fadeInUp 2s ease-in-out;
+    }
+
+    .home-content .start-planning-btn:hover {
+      background-color: #55efc4;
+      transform: scale(1.05);
+    }
+
+    /* About Section */
+    #about {
+      background-color: #fceae8;
+      padding: 80px 30px;
+      text-align: center;
+    }
+
+    #about h2 {
+      font-size: 2.5rem;
+      color: #d63078;
+      margin-bottom: 20px;
+    }
+
+    #about p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 800px;
+      margin: 10px auto;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #ba7e99;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MindMap</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="planner.html">Planner</a>
+      <a href="#about">About</a>
+      <a href="#">Logout</a>
+    </div>
+  </nav>
+
+  <div class="home-content">
+    <h1>Welcome to MindMap!</h1>
+    <p>Your personalized space to organize tasks, plan your day, and stay productive. Start making your day meaningful now!</p>
+    <a class="start-planning-btn" href="planner.html">Go to Planner</a>
+  </div>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About MindMap</h2>
+    <p>MindMap is your personal productivity companion, helping you stay organized and focused throughout the day.</p>
+    <p>Key features include a sleek daily planner, customizable task lists, calendar integrations, and goal tracking.</p>
+    <p>Our mission is to make your planning seamless, enjoyable, and effective — whether you're managing your studies, work, or personal goals.</p>
+  </section>
+
+  <footer>
+    &copy; 2025 MindMap. All rights reserved.
+  </footer>
+</body>
+</html>

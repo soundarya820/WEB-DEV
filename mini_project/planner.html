@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colorful Daily Planner</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      background: linear-gradient(to bottom right, #ffecd2, #fcb69f);
+      min-height: 100vh;
+    }
+
+    .planner-container {
+      background-color: #ffffffcc;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 900px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2d3436;
+      font-size: 2rem;
+    }
+
+    .task-input, .search-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .task-input input,
+    .task-input select,
+    .task-input button,
+    .search-bar input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .task-input button {
+      background-color: #ff7675;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .task-input button:hover {
+      background-color: #d63031;
+      transform: scale(1.05);
+    }
+
+    .category-section {
+      margin-bottom: 30px;
+    }
+
+    .category-header {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .progress-bar {
+      height: 10px;
+      border-radius: 5px;
+      background-color: #ddd;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-inner {
+      height: 100%;
+      background-color: #00b894;
+      width: 0%;
+      transition: width 0.4s ease;
+    }
+
+    .task {
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .task .task-info {
+      flex-grow: 1;
+    }
+
+    .task .task-info span {
+      display: block;
+      font-size: 14px;
+    }
+
+    .actions button {
+      margin-left: 10px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .actions button.complete {
+      background-color: #00b894;
+      color: white;
+    }
+
+    .actions button.complete:hover {
+      background-color: #019875;
+      transform: scale(1.05);
+    }
+
+    .actions button.delete {
+      background-color: #fd6e6e;
+      color: white;
+    }
+
+    .actions button.delete:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    .task-priority.low { border-left: 5px solid #f1c40f; }
+    .task-priority.medium { border-left: 5px solid #e67e22; }
+    .task-priority.high { border-left: 5px solid #e74c3c; }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="planner-container">
+    <h1>🌟 Daily Planner</h1>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Search tasks..." onkeyup="filterTasks()" style="flex:1;" />
+    </div>
+
+    <div class="task-input">
+      <input type="text" id="taskInput" placeholder="Enter your task" style="flex:2;" />
+      <input type="date" id="taskDate" />
+      <select id="taskCategory">
+        <option value="work">Work</option>
+        <option value="personal">Personal</option>
+        <option value="study">Study</option>
+      </select>
+      <select id="taskPriority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+      </select>
+      <button onclick="addTask()">Add</button>
+    </div>
+
+    <div id="work-section" class="category-section">
+      <div class="category-header">💼 Work</div>
+      <div class="progress-bar"><div id="progress-work" class="progress-bar-inner"></div></div>
+      <div class="task-list" id="work-tasks"></div>
+    </div>
+
+    <div id="personal-section" class="category-section">
+      <div class="category-header">🏠 Personal</div>
+      <div class="progress-bar"><div id="progress-personal" class="progress-bar-inner"></div></div>
+      <div class="task-list" id="personal-tasks"></div>
+    </div>
+
+    <div id="study-section" class="category-section">
+      <div class="category-header">📚 Study</div>
+      <div class="progress-bar"><div id="progress-study" class="progress-bar-inner"></div></div>
+      <div class="task-list" id="study-tasks"></div>
+    </div>
+  </div>
+
+  <script>
+    function addTask() {
+      const text = document.getElementById('taskInput').value.trim();
+      const date = document.getElementById('taskDate').value;
+      const priority = document.getElementById('taskPriority').value;
+      const category = document.getElementById('taskCategory').value;
+
+      if (text === '' || date === '') return;
+
+      const task = document.createElement('div');
+      task.className = `task task-priority ${priority}`;
+      task.setAttribute('data-task-text', text.toLowerCase());
+
+      const taskInfo = document.createElement('div');
+      taskInfo.className = 'task-info';
+      taskInfo.innerHTML = `<strong>${text}</strong><span>Due: ${date}</span><span>Priority: ${priority}</span>`;
+
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+
+      const completeBtn = document.createElement('button');
+      completeBtn.textContent = '✓';
+      completeBtn.className = 'complete';
+      completeBtn.onclick = () => {
+        task.classList.toggle('completed');
+        if (task.style.textDecoration === 'line-through') {
+          task.style.textDecoration = '';
+          task.style.opacity = '1';
+        } else {
+          task.style.textDecoration = 'line-through';
+          task.style.opacity = '0.6';
+        }
+        updateProgress(category);
+      };
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '🗑';
+      deleteBtn.className = 'delete';
+      deleteBtn.onclick = () => {
+        task.remove();
+        updateProgress(category);
+      };
+
+      actions.appendChild(completeBtn);
+      actions.appendChild(deleteBtn);
+
+      task.appendChild(taskInfo);
+      task.appendChild(actions);
+
+      document.getElementById(`${category}-tasks`).appendChild(task);
+      updateProgress(category);
+
+      document.getElementById('taskInput').value = '';
+      document.getElementById('taskDate').value = '';
+    }
+
+    function updateProgress(category) {
+      const list = document.getElementById(`${category}-tasks`);
+      const tasks = list.querySelectorAll('.task');
+      const completed = list.querySelectorAll('.task[style*="line-through"]');
+      const progress = tasks.length === 0 ? 0 : (completed.length / tasks.length) * 100;
+      document.getElementById(`progress-${category}`).style.width = `${progress}%`;
+    }
+
+    function filterTasks() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const allTasks = document.querySelectorAll('.task');
+      allTasks.forEach(task => {
+        const text = task.getAttribute('data-task-text');
+        task.style.display = text.includes(query) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
