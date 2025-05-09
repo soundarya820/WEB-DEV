@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Info</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #34495e); /* Dark gradient background */
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .info-box h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background-color: #34495e; /* Dark gray */
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            color: white;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 30px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            background-color: #2ecc71; /* Green on hover */
+        }
+
+        .html-btn {
+            background-color: #1abc9c; /* Teal color */
+        }
+
+        .css-btn {
+            background-color: #3498db; /* Blue color */
+        }
+
+        .xml-btn {
+            background-color: #e74c3c; /* Red color */
+        }
+
+        .btn:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="info-box">
+            <h1>Soundarya Rukade</h1>
+            <p><strong>Roll No:</strong> 121</p>
+            <p><strong>Division:</strong> B</p>
+            <p><strong>Batch:</strong> S5</p>
+        </div>
+
+        <div class="button-container">
+            <a href="HTML/html-assignments.html"><button class="btn html-btn">HTML</button></a>
+            <a href="CSS/css-assignments.html"><button class="btn css-btn">CSS</button></a>
+            <a href="XML/xml-assignment.html"><button class="btn xml-btn">XML</button></a>
+        </div>
+    </div>
+</body>
+</html>
